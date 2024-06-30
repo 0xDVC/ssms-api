@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/student")
+@RequestMapping("api/v1/student")
 public class StudentController {
     private static final String STUDENT_URL_ID = "/{studentSlug}";
     private final StudentService studentService;

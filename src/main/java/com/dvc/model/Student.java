@@ -21,7 +21,6 @@ public class Student {
     private int studentSlug;
 
     @Column(nullable = false)
-
     private String firstName;
 
     @Column(nullable = false)
@@ -34,5 +33,6 @@ public class Student {
 
     @UpdateTimestamp
     private ZonedDateTime updatedAt;
+
 
 }
