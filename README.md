@@ -3,4 +3,4 @@ Simple Student Management System based on the SRE bootcamp exercises [https://pl
 
 
 ## Structure
-![Structure](target/Structure.png)
+![Structure](docs/Structure.png)
