@@ -18,13 +18,13 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public void deleteStudent(int studentSlug) {
-         studentRepository.delete(getStudentBySlug(studentSlug));
+    public void deleteStudent(Long studentId) {
+         studentRepository.deleteById(studentId);
     }
-    public Student getStudentBySlug(int studentSlug) {
+    public Student getStudentById(Long studentId) {
         return studentRepository.findAll()
                 .stream()
-                .filter(student -> student.getStudentSlug() == studentSlug)
+                .filter(student -> student.getStudentID().equals(studentId))
                 .findFirst().orElse(null);
     }
 
@@ -32,8 +32,8 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public Student updateStudent(int studentSlug, Student student) {
-        Student studentToUpdate = getStudentBySlug(studentSlug);
+    public Student updateStudent(Long studentId, Student student) {
+        Student studentToUpdate = getStudentById(studentId);
 
         studentToUpdate.setFirstName(student.getFirstName());
         studentToUpdate.setLastName(student.getLastName());

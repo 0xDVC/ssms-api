@@ -5,7 +5,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import java.time.ZonedDateTime;
 import lombok.*;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,9 +15,13 @@ import java.util.UUID;
 @Table(name = "students")
 public class Student {
     @Id
-    private UUID studentID;
-
-    private int studentSlug;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(
+            name = "stud_seq",
+            sequenceName = "stud_seq",
+            allocationSize = 100
+    )
+    private Long studentID;
 
     @Column(nullable = false)
     private String firstName;
@@ -33,6 +36,5 @@ public class Student {
 
     @UpdateTimestamp
     private ZonedDateTime updatedAt;
-
 
 }

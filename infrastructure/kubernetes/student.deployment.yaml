@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: ssms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ssms-api
+  template:
+    metadata:
+      labels:
+        app: ssms-api
+    spec:
+      containers:
+        - name: ssms-api
+          image: 0xdvc/ssms-api
+          ports:
+            - containerPort: 8080

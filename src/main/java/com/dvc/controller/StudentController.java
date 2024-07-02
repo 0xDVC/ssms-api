@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/student")
 public class StudentController {
-    private static final String STUDENT_URL_ID = "/{studentSlug}";
+    private static final String STUDENT_URL_ID = "/{studentId}";
     private final StudentService studentService;
 
     public StudentController(StudentService studentService) {
@@ -25,14 +25,14 @@ public class StudentController {
     }
 
     @DeleteMapping(STUDENT_URL_ID)
-    public ResponseEntity<Student> deleteStudent(@PathVariable int studentSlug) {
-        studentService.deleteStudent(studentSlug);
+    public ResponseEntity<Student> deleteStudent(@PathVariable Long studentId) {
+        studentService.deleteStudent(studentId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @GetMapping(STUDENT_URL_ID)
-    public ResponseEntity<Student> getStudent(@PathVariable int studentSlug) {
-        return ResponseEntity.ok(studentService.getStudentBySlug(studentSlug));
+    public ResponseEntity<Student> getStudent(@PathVariable Long studentId) {
+        return ResponseEntity.ok(studentService.getStudentById(studentId));
     }
 
     @GetMapping
@@ -41,8 +41,8 @@ public class StudentController {
     }
 
     @PutMapping(STUDENT_URL_ID)
-    public ResponseEntity<Student> updateStudent(@PathVariable int studentSlug, @RequestBody Student student) {
-        return ResponseEntity.ok(studentService.updateStudent(studentSlug, student));
+    public ResponseEntity<Student> updateStudent(@PathVariable Long studentId, @RequestBody Student student) {
+        return ResponseEntity.ok(studentService.updateStudent(studentId, student));
     }
 }
 
