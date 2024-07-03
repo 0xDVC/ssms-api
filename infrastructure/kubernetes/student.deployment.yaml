@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: ssms-api
-          image: 0xdvc/ssms-api
+          image: 0xDVC/ssms-api
           ports:
             - containerPort: 8080

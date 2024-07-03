@@ -34,10 +34,12 @@ public class StudentService {
 
     public Student updateStudent(Long studentId, Student student) {
         Student studentToUpdate = getStudentById(studentId);
-
-        studentToUpdate.setFirstName(student.getFirstName());
-        studentToUpdate.setLastName(student.getLastName());
-        studentToUpdate.setStudentEmail(student.getStudentEmail());
-        return studentRepository.save(studentToUpdate);
+        if (studentToUpdate != null) {
+            studentToUpdate.setFirstName(student.getFirstName());
+            studentToUpdate.setLastName(student.getLastName());
+            studentToUpdate.setStudentEmail(student.getStudentEmail());
+            return studentRepository.save(studentToUpdate);
+        }
+        return null;
     }
 }
